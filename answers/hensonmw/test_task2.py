@@ -14,10 +14,10 @@ http://penandpants.com/2014/10/07/testing-with-numpy-and-pandas/
 
 class TestTask2(unittest.TestCase):
     def test_sorting(self):
-        df = pandas.DataFrame({'Swamp_A': [2,3]})
+        df = pandas.DataFrame({'Swamp_A': [3,2]})
         observed = task2.sorting(df)
         expected = pandas.DataFrame({'Swamp_A': [3,2]})
-        self.assertEqual(str(observed), str(expected))
+        pandas.util.testing.assert_frame_equal(observed, expected)
 
     def test_transpose(df):
         df = pandas.DataFrame({'Swamp_A': [2,3]})
@@ -32,8 +32,9 @@ class TestTask2(unittest.TestCase):
         pandas.util.testing.assert_frame_equal(observed, expected)
 
     def test_evaluation(self):
-        observed = '0'
-        expected = '0'
+        df = pandas.DataFrame({'Swamp_A': [2,3]})
+        observed = task2.evaluation(df)
+        expected = 0
         self.assertEqual(observed, expected)
 
     def test_mean(df):
